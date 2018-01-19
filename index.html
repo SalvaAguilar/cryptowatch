@@ -30,6 +30,9 @@
 </HEAD>
 
 <BODY style="background: #363843;">
+	<!-- <SCRIPT type="text/javascript">
+		change_theme();
+	</SCRIPT> -->
 
 	<DIV class="topnav" id="topnav">
 		<DIV class="label">
@@ -44,7 +47,6 @@
 		</DIV>
 		<BUTTON id="theme-toggle" class="theme" onclick="change_theme()">browser incompatible</BUTTON>
 		<BUTTON id="configChart" class="theme" onclick="showMultiConfig()">javascript crashed</BUTTON>
-		<BUTTON class="btn right" onclick="showInfo()">HELP / DONATE</BUTTON>
 		<DIV class="modalConfig">
 			<DIV class="hero">
 					<DIV id="addMultiChart" class="cornflower-box">
@@ -65,10 +67,10 @@
 							<DIV style='float:left;width: 86.3%;'>
 								<SELECT id="listPairs" multiple="multiple" rows=2>
 									<!-- Test options dev use
-									<OPTION value="BITTREX:BTCUSDT">BITTREX:BTCUSDT</OPTION>
-									<OPTION value="BITTREX:ETHUSDT">BITTREX:ETHUSDT</OPTION>
-									<OPTION value="BITTREX:OMGBTC">BITTREX:OMGBTC</OPTION>
-									<OPTION value="BITTREX:LTCBTC">BITTREX:LTCBTC</OPTION> -->
+									<OPTION value="KRAKEN:XRPEUR">KRAKEN:XRPEUR</OPTION>
+									<OPTION value="KRAKEN:LTCEUR">KRAKEN:LTCEUR</OPTION>
+									<OPTION value="KRAKEN:ETHEUR">KRAKEN:ETHEUR</OPTION>
+									<OPTION value="KRAKEN:BTCEUR">KRAKEN:BTCEUR</OPTION> -->
 								</SELECT>
 							</DIV>
 							<INPUT id="btnRemovePairs" style="background: #d14343; border: none; width: 100%;" type="button" value="Remove Selected Pairs" onclick="btnRemovePairsClick()" />
@@ -171,78 +173,6 @@
 						<A href="javascript:void(0)" onclick="showMultiConfig()">Cancel</A>
 					</DIV>
 				</DIV>
-		</DIV>
-		<DIV class="modalInfo">
-			<DIV>
-				<script src="https://authedmine.com/lib/simple-ui.min.js" async></script>
-				<div class="coinhive-miner" 
-					style="min-width: 256px; width: 50%; margin: auto; height: 310px"
-					data-key="qlg40ocjVN23BXixQh7zEcTP2WAgSAU9">
-					<em>Support your home for crypto charts by disabling ad blocker (no on-screen ads!)</em>
-				</div>
-				<DIV style="display:flex;">
-					<DIV>
-						<!-- <H3 style="color: #fff;">Make MCC Better!</H3> -->
-						<P>
-							We hope you love MCC. <br />
-							Features / Bugs? Email:
-							<A target="blank" href="mailto:forever.scg@outlook.com">forever.scg@outlook.com</A> <br />
-							You can find us on 
-							<A target="blank" href="https://github.com/JosiahLeas/josiahleas.github.io">Github</A>, 
-							or <A target="blank" href="http://prettysights.com/cuentas.html">PrettySights</A>. <br />
-							<br />
-							<b>
-							The code is all open source but hosting this site costs. <br />
-							<br />
-							Here are ways you can support us (with crypto of course!!)
-							</b>
-						</P>
-					</DIV>
-					<DIV style="padding-left: 8px;">
-						<H2>ETH: </H2>
-						<H4>0xf75e3d6496b32b2896e42644cc2811c07065690f</H4>
-						<H2>BTC: </H2>
-						<H4>168DUnvPvWSR1JEHm4fxqvYFMub56zmyxm</H4>
-						<H2>LTC: </H2>
-						<H4>LZkWoYbPb3cCeXqQCsVYrCRZL76AZshpP5</H4>
-					</DIV>
-				</DIV>
-				<!-- <section id="content3">
-					<H1>leasj </H1>
-					<H6>
-						<a href="https://github.com/JosiahLeas/josiahleas.github.io" target="_blank" style="margin: 0; padding: 0;">Github/JosiahLeas</A>
-					</H6>
-					<BR>
-					<H1>P-Medicado </H1>
-					<H6>
-						<a href="https://github.com/P-Medicado" target="_blank" style="margin: 0; padding: 0;">Github/P-Medicado</A>
-					</H6>
-					<BR>
-					<H1>WhiteRavenTechnology </H1>
-					<H6>
-						<a href="https://github.com/WhiteRavenTechnology" target="_blank" style="margin: 0; padding: 0;">Github/WhiteRavenTechnology</A>
-					</H6>
-					<BR>
-					<H1>shellstrom </H1>
-					<H6>
-						<a href="https://github.com/shellstrom" target="_blank" style="margin: 0; padding: 0;">Github/shellstrom</A>
-					</H6>
-					<BR>
-					<H1>qwerty </H1>
-					<H6>
-						<a href="https://github.com/qwerty1891" target="_blank" style="margin: 0; padding: 0;">Github/qwerty1891</A>
-					</H6>
-					<BR>
-					<H1>forever.scg </H1>
-					<H6>
-						<a href="http://prettysights.com/" target="_blank" style="margin: 0; padding: 0;">http://PrettySights.com/</A>
-					</H6>
-					<BR>
-				</section> -->
-				<DIV>
-					<BUTTON onclick="showInfo()">Close</BUTTON>
-				</DIV>
-			</DIV>
 		</DIV>
 	</DIV>
 

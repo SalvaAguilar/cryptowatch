@@ -1,6 +1,6 @@
 // Pinche Medicado - Josiah Leas :: PrettySights.com vx
 // stored variables
-const DEBUGMODE = false; //change to false outside testdrive
+const DEBUGMODE = true; //change to false outside testdrive
 const STORAGE_USEDARKTHEME = "useDarkTheme";
 const STORAGE_WIDTH = "table_width";
 const STORAGE_HEIGHT = "table_height";
@@ -14,7 +14,6 @@ const STORAGE_SHOWTOPTOOLBAR = "showTopToolbar";
 const STORAGE_ALLOWSYMBOLCHANGE = "allowSymbolChange";
 const STORAGE_USESMALLBUTTON = "useSmallButton";
 const STORAGE_CHARTSPAIRS = "charts.pairs";
-const BASEURL_COINIGY = "https://www.coinigy.com/main/markets";
 
 let gbl_dark = null;
 let gbl_boxWidth = '';
@@ -149,37 +148,11 @@ function letsGo() {
         if (DEBUGMODE) console.log("\t"+STORAGE_CHARTSPAIRS+": " + charts.pairs);
         setChartCount();
     }
-    function openCoinigy(chartTicker) {
-        if (DEBUGMODE) console.log("openCoinigy(): " + chartTicker);
-        var pairsArr = chartTicker.split(":");
-        var exchange = coinigyexchanges[pairsArr[0]];
-        var ticker1 = "";
-        var ticker2 = "";
-    
-        var coinsFound = false;
-        var pairs = pairsArr[1];
-        //Look in the list of coins, starting from 2 digits to 8 digits
-        for (var i=2; i<=8; i++) {
-            if (cryptocurrencies[pairs.substr(0,i)]) {
-                ticker1 = pairs.substr(0,i);
-                ticker2 = pairs.substr(i, pairs.length);
-                coinsFound = true;
-            }
-        }
-    
-        if (!coinsFound) {
-            alert("Sorry it seems that we are not able to find the " + pairs + " pairs in Coinigy");
-        } else {
-            var coinigyURL = BASEURL_COINIGY;
-            coinigyURL += "/" + exchange;
-            coinigyURL += "/" + ticker1;
-            coinigyURL += "/" + ticker2;
-            if (DEBUGMODE) console.log("\tCoinigy URL: " + coinigyURL);
-            window.open(coinigyURL);
-        }
-    }
+
 // topbar funcs
     function createChart(chartTicker) {
+        //by default black theme.
+        gbl_dark = true;
         let boxElement = document.createElement("div");
         //use unique id based on milliseconds
         var i = (new Date).getTime();
@@ -220,23 +193,14 @@ function letsGo() {
             "show_popup_button": false,
             "withdateranges": withdateranges,
             "details": details,
-            "hideideas": true
+            "hideideas": true,
+            "studies": [
+                "DM@tv-basicstudies"
+            ]
         });
 
         let topButtonContainerElement = document.createElement("div");
         topButtonContainerElement.setAttribute("class", "box-button-container");
-
-        //Open in Coinigy button
-        let btnEl = document.createElement("a");
-        btnEl.innerHTML = "<img src='images/coinigy.png' class='"+ usesmallbutton2 + "'/>";
-        btnEl.setAttribute("href", "javascript:void(0)");
-        btnEl.setAttribute("title", "Open in Coinigy");
-        btnEl.setAttribute("data-balloon-length", "small");
-        btnEl.setAttribute("data-balloon", "Open in Coinigy");
-        btnEl.setAttribute("data-balloon-pos", "left");
-        btnEl.addEventListener("click", openCoinigy.bind(null,chartTicker));
-
-        topButtonContainerElement.appendChild(btnEl);
 
         //Show in Fullscreen button
         btnEl = document.createElement("a");
@@ -296,9 +260,9 @@ function letsGo() {
     }
     function change_theme() {
         if (gbl_dark === true) {
-                lighten();
+            darken();
         } else {
-                darken();
+            lighten();
         }
         
         //https://stackoverflow.com/a/10842519
@@ -465,31 +429,20 @@ function letsGo() {
             var chartPairs = storeMAN(false, STORAGE_CHARTSPAIRS);
             console.log(chartPairs);
             var listPairs = document.getElementById('listPairs');
-            if (chartPairs) {
-                //if there are any charts in previous localstorage, restore them
-                var chartsPairsArr = chartPairs.split(",");
-                for (i=0; i<chartsPairsArr.length; i++) {
-                    charts.pairs.push(chartsPairsArr[i]);
-                }
-            } else {
+            // if (chartPairs) {
+            //     //if there are any charts in previous localstorage, restore them
+            //     var chartsPairsArr = chartPairs.split(",");
+            //     for (i=0; i<chartsPairsArr.length; i++) {
+            //         charts.pairs.push(chartsPairsArr[i]);
+            //     }
+            // } else {
                 //if there are nothing in the localstorage, use some default value
-                charts.pairs.push("COINBASE:BTCUSD");
-                charts.pairs.push("COINBASE:ETHUSD");
-                charts.pairs.push("BITTREX:OMGBTC");
-                charts.pairs.push("BITTREX:BTGBTC");
-            }
+                charts.pairs.push("KRAKEN:XRPEUR");
+                charts.pairs.push("KRAKEN:LTCEUR");
+                charts.pairs.push("KRAKEN:ETHEUR");
+                charts.pairs.push("KRAKEN:BCHEUR");
+            //}
         }
-
-        // DEPRECATED
-        // if (url.indexOf("chart")>0) {
-        //     //if there are chart= parameters, hide the intro display
-        //     var elements = document.getElementsByClassName("divIntro");
-        //     for (i = 0; i < elements.length; i++) {
-        //         elements[i].style.display = "none";
-        //     }
-        //     viewDIV("nocharts", false);
-        //     viewDIV("topnav", true);
-        // }
     }
 // load chart parameters 
     function loadChartParameters() {
@@ -541,24 +494,6 @@ function letsGo() {
 // MISC
 // bind button inputs
     function bindInputKeyUp() {
-
-        // DEPRECATED
-        // document.getElementById("pairsInput")
-        // .addEventListener("keyup", function(event) {
-        //     event.preventDefault();
-        //     if (event.keyCode === 13) {
-        //         chartTicker = this.value.toUpperCase();
-        //         if (charts.pairs.indexOf(chartTicker)>=0) {
-        //             alert("You have already added " + chartTicker + "\n\nPlease add a different pairs");
-        //         } else {
-        //             listPairs = document.getElementById('listPairs');
-        //             listPairs.options[listPairs.options.length] = new Option(chartTicker, chartTicker);
-        //         }
-        //         this.value = "";
-        //         document.getElementById("pairsInput").focus();
-        //     }
-        // });
-    
         document.getElementById("SinglepairsInput")
             .addEventListener("keyup", function(event) {
                 event.preventDefault();
@@ -708,16 +643,3 @@ function letsGo() {
     function doLOG(title = "", obj = "") {
         console.log("\t"+title+": ", obj);
     }
-// VIEJA Y MUERTO :: DEPRECATED
-//
-    // function checkboxClickStoreToLocalStorage(el, localStorageVar) {
-    //     try {
-    //         localStorage.setItem(localStorageVar, el.checked);
-    //     } catch(e) {}
-    // }
-    // function selectClickStoreToLocalStorage(el, localStorageVar) {
-    //     try {
-    //         localStorage.setItem(localStorageVar, el.options[el.selectedIndex].value);
-    //     } catch(e) {}
-    // }
-    
