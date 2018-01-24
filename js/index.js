@@ -196,8 +196,7 @@ function letsGo() {
             "hideideas": true,
             "studies": [
                 "DM@tv-basicstudies",
-                "AROON@tv-basicstudies"
-                
+                "AROON@tv-basicstudies",
             ]
         });
 
