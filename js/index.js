@@ -176,7 +176,7 @@ function letsGo() {
         var usesmallbutton = (usesmallbuttonChk.checked ? "button-fullscreen-small" : "button-fullscreen");
         var usesmallbutton2 = (usesmallbuttonChk.checked ? "button-coinigy-small" : "button-coinigy");
 
-        new TradingView.widget({
+        var widget = new TradingView.widget({
             "container_id": "box" + i,
             "autosize": true,
             "symbol": chartTicker,
@@ -194,11 +194,17 @@ function letsGo() {
             "withdateranges": withdateranges,
             "details": details,
             "hideideas": true,
+            "studies_overrides": {
+                "aroon.aroon up.color" : "#00FFFF",
+                "aroon.aroon_up.linewidth" : 10,
+            },
             "studies": [
                 "DM@tv-basicstudies",
                 "AROON@tv-basicstudies",
+                "BB@tv-basicstudies",
             ]
         });
+
 
         let topButtonContainerElement = document.createElement("div");
         topButtonContainerElement.setAttribute("class", "box-button-container");
@@ -441,7 +447,7 @@ function letsGo() {
                 charts.pairs.push("KRAKEN:XRPEUR");
                 charts.pairs.push("KRAKEN:LTCEUR");
                 charts.pairs.push("KRAKEN:ETHEUR");
-                charts.pairs.push("KRAKEN:BCHEUR");
+                charts.pairs.push("KRAKEN:ZECEUR");
             //}
         }
     }
