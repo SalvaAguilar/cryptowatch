@@ -200,7 +200,7 @@ function letsGo() {
             },
             "studies": [
                 "DM@tv-basicstudies",
-                "AROON@tv-basicstudies",
+                "OBV@tv-basicstudies",
                 "BB@tv-basicstudies",
             ]
         });
