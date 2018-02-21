@@ -447,7 +447,7 @@ function letsGo() {
                 charts.pairs.push("KRAKEN:XRPEUR");
                 charts.pairs.push("KRAKEN:LTCEUR");
                 charts.pairs.push("KRAKEN:ETHEUR");
-                charts.pairs.push("KRAKEN:ZECEUR");
+                charts.pairs.push("KRAKEN:XMREUR");
             //}
         }
     }
