@@ -200,8 +200,9 @@ function letsGo() {
             },
             "studies": [
                 "DM@tv-basicstudies",
-                "OBV@tv-basicstudies",
+                "MACD@tv-basicstudies",
                 "BB@tv-basicstudies",
+                "AwesomeOscillator@tv-basicstudies"
             ]
         });
 
@@ -447,7 +448,7 @@ function letsGo() {
                 charts.pairs.push("KRAKEN:XRPEUR");
                 charts.pairs.push("KRAKEN:LTCEUR");
                 charts.pairs.push("KRAKEN:ETHEUR");
-                charts.pairs.push("KRAKEN:XMREUR");
+                charts.pairs.push("KRAKEN:XMREUR"); 
             //}
         }
     }
